@@ -35,15 +35,16 @@ def BFS(G, source, dest, heuristics, pos):
     visited = {node: False for node in G.nodes()}
     final_path = []
     goal = BFSUtil(G, source, visited, final_path, dest, 0)
+    print(final_path)
     prev = -1
     for var in final_path:
         if prev != -1:
             curr = var
-            nx.draw_networkx_edges(G, pos, edgelist=[(prev, curr)], width=2.5, alpha=0.8, edge_color='black')
+            nx.draw_networkx_edges(G, pos, edgelist=[(prev, curr)], width=2.5, alpha=1, edge_color='black')
             prev = curr
         else:
             prev = var
-            return
+    return
 
 def getHeuristics(G):
     heuristics = {}
@@ -79,4 +80,5 @@ if __name__ == "__main__":
     pos = DrawPath(G, source, dest)
     BFS(G, source, dest, heuristics, pos)
     plt.show()
+
 
